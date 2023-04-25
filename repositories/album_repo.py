@@ -13,7 +13,7 @@ def select_all():
 
     for row in results: #translates the results from SQL query into an instance of our Album class.
         artist = artist_repo.select(row['artist_id']) #common problem is forgetting to call the artist Class first before calling Album
-        album = Album(row['title'], artist, row['id'])
+        album = Album(row['title'], artist, row['genre'], row['id'])
         albums.append(album)
     
     return albums
@@ -26,7 +26,7 @@ def select(id):
     if rows: #this will check for flasey conditions ie in case rows doesn't exist (False)
         album_info = rows[0]
         artist = artist_repo.select(album_info['artist_id'])
-        album = Album(album_info['title'], artist, album_info['id'])
+        album = Album(album_info['title'], artist, album_info['genre'], album_info['id'])
 
     return album
 

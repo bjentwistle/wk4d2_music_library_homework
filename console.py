@@ -26,6 +26,7 @@ album_repo.save(album1)
 album2 = Album("Slippery when wet", "Hard Rock", artist2)
 album_repo.save(album2)
 
+album_repo.select_all()
 
 
 
