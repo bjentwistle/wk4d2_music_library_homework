@@ -13,7 +13,7 @@ def select_all():
 
     for row in results: #translates the results from SQL query into an instance of our Album class.
         artist = artist_repo.select(row['artist_id']) #common problem is forgetting to call the artist Class first before calling Album
-        album = Album(row['description'], artist, row['id'])
+        album = Album(row['title'], artist, row['id'])
         albums.append(album)
     
     return albums
@@ -26,7 +26,7 @@ def select(id):
     if rows: #this will check for flasey conditions ie in case rows doesn't exist (False)
         album_info = rows[0]
         artist = artist_repo.select(album_info['artist_id'])
-        album = Album(album_info['description'], artist, album_info['id'])
+        album = Album(album_info['title'], artist, album_info['id'])
 
     return album
 
@@ -35,8 +35,8 @@ def save(album):
     # sql = f"INSERT INTO albums (description, artist) VALUES('{album.description}','{album.artist}' )"
     #Here we are vulnerable to unscruptulous people inputting an sql injection (of code) that might delete our data/db. 
     # So we write it differently using %s as placeholders for our inputs.
-    sql = f"INSERT INTO albums (description, artist_id) VALUES(%s, %s) RETURNING * " #just returns the single row we just created
-    values = [album.description, album.artist.id, album.duration, album.completed]
+    sql = f"INSERT INTO albums (title, genre, artist_id) VALUES(%s, %s, %s) RETURNING * " #just returns the single row we just created
+    values = [album.title, album.genre, album.artist.id]
     rows = run_sql(sql, values)
     id = rows[0]['id'] # get the id assigned by the database an giving it to the variable id
     album.id = id # now our album.id is set to id from the database.
@@ -54,6 +54,6 @@ def delete(id):
     run_sql(sql, values)
 
 def update_album(album):
-    sql = 'UPDATE albums SET (description, artist_id) = (%s, %s) WHERE id = %s'
-    values = [album.description, album.artist.id, album.id]
+    sql = 'UPDATE albums SET (title, genre, artist_id) = (%s, %s, %s) WHERE id = %s'
+    values = [album.title, album.genre, album.artist.id, album.id]
     run_sql(sql, values)
