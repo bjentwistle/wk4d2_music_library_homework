@@ -26,8 +26,7 @@ def select(id):
     if rows: #this will check for flasey conditions ie in case rows doesn't exist (False)
         album_info = rows[0]
         artist = artist_repo.select(album_info['artist_id'])
-        album = Album(album_info['title'], artist, album_info['genre'], album_info['id'])
-
+        album = Album(album_info['title'], album_info['genre'], artist, album_info['id'])
     return album
 
 

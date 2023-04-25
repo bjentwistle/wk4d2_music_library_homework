@@ -16,7 +16,7 @@ def run_sql(sql, values = None): #values would be used to INSERT new data into t
         cur.close() #close the cursor connection
 
     except (Exception, psycopg2.DatabaseError) as error:
-        print("We have an error message:", error)
+        print("Becky you have an error message:", error)
 
     finally:
         if conn is not None: #checking the connection was make in the first place

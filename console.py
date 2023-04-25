@@ -13,8 +13,17 @@ artist1 = Artist("Amy Winehouse")
 artist_repo.save(artist1)
 artist2 = Artist("Bon Jovi")
 artist_repo.save(artist2)
+artist3 = Artist("Beyonce")
+artist_repo.save(artist3)
+artist4 = Artist("Prince")
+artist_repo.save(artist4)
 
-artist_repo.select_all()
+artists_list_of_instances = artist_repo.select_all()
+for artist in artists_list_of_instances:
+    print(f"The artist name is {artist.artist_name}")
+
+result_artist = artist_repo.select(2)
+print(f"The selected artist's name is {result_artist.artist_name}")
 
     # self.id = id
     # self.title = title
@@ -25,9 +34,19 @@ album1 = Album("Back to Black", "Soul", artist1)
 album_repo.save(album1)
 album2 = Album("Slippery when wet", "Hard Rock", artist2)
 album_repo.save(album2)
+album3 = Album("Renaissance", "R&B", artist3)
+album_repo.save(album3)
+album4 = Album("Purple Rain", "Pop", artist4)
+album_repo.save(album4)
 
-album_repo.select_all()
+album_table = album_repo.select_all()
+for album in album_table:
+    print(f"The seleted album's title is {album.title}")
 
+result_album = album_repo.select(2)
+print(f"The album title is {result_album.title}")
+
+#album_repo.update_album(4, genre='Rock')
 
 
 
