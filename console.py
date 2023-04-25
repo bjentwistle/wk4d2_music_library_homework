@@ -46,8 +46,11 @@ for album in album_table:
 result_album = album_repo.select(2)
 print(f"The album title is {result_album.title}")
 
-#album_repo.update_album(4, genre='Rock')
+new_genre = album_repo.update_genre(4, "Rock")
 
+new_title = album_repo.update_title(3, "Lemonade")
 
-
+new_artist_name = artist_repo.update_artist_name(4, "@±$")
+result_artist = artist_repo.select(4)
+print(f"The selected artist's name is {result_artist.artist_name}")
 

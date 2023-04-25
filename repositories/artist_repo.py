@@ -52,3 +52,8 @@ def update(artist):
     sql = "UPDATE artists SET (artist_name) = (%s, %s) WHERE id = %s"
     values = [artist.first_name, artist.last_name, artist.id]
     run_sql(sql, values)
+
+def update_artist_name(id, new_name):
+    sql = "UPDATE artists SET artist_name = %s WHERE id = %s"
+    values = [new_name, id]
+    run_sql(sql, values)
