@@ -18,12 +18,12 @@ artist_repo.save(artist3)
 artist4 = Artist("Prince")
 artist_repo.save(artist4)
 
-artists_list_of_instances = artist_repo.select_all()
-for artist in artists_list_of_instances:
-    print(f"The artist name is {artist.artist_name}")
+# artists_list_of_instances = artist_repo.select_all()
+# for artist in artists_list_of_instances:
+#     print(f"The artist name is {artist.artist_name}")
 
-result_artist = artist_repo.select(2)
-print(f"The selected artist's name is {result_artist.artist_name}")
+# result_artist = artist_repo.select(2)
+# print(f"The selected artist's name is {result_artist.artist_name}")
 
     # self.id = id
     # self.title = title
@@ -39,18 +39,20 @@ album_repo.save(album3)
 album4 = Album("Purple Rain", "Pop", artist4)
 album_repo.save(album4)
 
-album_table = album_repo.select_all()
-for album in album_table:
-    print(f"The seleted album's title is {album.title}")
+# album_table = album_repo.select_all()
+# for album in album_table:
+#     print(f"The seleted album's title is {album.title}")
 
-result_album = album_repo.select(2)
-print(f"The album title is {result_album.title}")
+# result_album = album_repo.select(2)
+# print(f"The album title is {result_album.title}")
 
-new_genre = album_repo.update_genre(4, "Rock")
+album_repo.update_album(3, 'genre', "Rock")
+print(f"The album genre is {album3.genre}")
+# new_genre = album_repo.update_genre(4, "Rock")
 
-new_title = album_repo.update_title(3, "Lemonade")
+# new_title = album_repo.update_title(3, "Lemonade")
 
-new_artist_name = artist_repo.update_artist_name(4, "@±$")
-result_artist = artist_repo.select(4)
-print(f"The selected artist's name is {result_artist.artist_name}")
+# new_artist_name = artist_repo.update_artist_name(4, "@±$")
+# result_artist = artist_repo.select(4)
+# print(f"The selected artist's name is {result_artist.artist_name}")
 

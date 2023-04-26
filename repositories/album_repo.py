@@ -52,10 +52,13 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
-def update_album(album): 
-    sql = 'UPDATE albums SET (title, genre, artist_id) = (%s, %s, %s) WHERE id = %s'
-    values = [album.title, album.genre, album.artist.id, album.id]
+def update_album(id, column, value): 
+    sql = 'UPDATE albums SET column = %s WHERE id = %s RETURNING *'
+    values = [value]
     run_sql(sql, values)
+
+    # UPDATE table_name SET column1 = value1, column2 = value2, WHERE condition
+    # RETURNING * | output_expression AS output_name;
 
 def update_genre(id, new_genre): 
     sql = "UPDATE albums SET genre = %s WHERE id = %s"
